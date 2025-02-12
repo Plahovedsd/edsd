@@ -17,7 +17,7 @@ class HabrSpider(scrapy.Spider):
                 'url': 'https://habr.com' + article.xpath('.//h2/a/@href').get(default=''),
                 'название статьи': article.xpath('.//h2/a/span/text()').get(default='').strip(),
                 'количество просмотров': self.extract_int(Amount_of_views),
-                'время чтения': self.extract_reading_time(reading_time),
+                'время чтения (мин)': self.extract_reading_time(reading_time),
                 'количество комментариев': self.extract_int(article.xpath('.//span[contains(@class, "comments-count")]/text()').get(default='0')),
             }
         #переход на след. страницу
